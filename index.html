@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collapsible Section</title>
+<style>
+/* Overall container */
+.collapsible-container {
+  font-family: sans-serif; /* Use a generic sans-serif for now.  Change if needed */
+  width: 100%; /* Make it take up the full width of its container (Canva embed block) */
+  max-width: 600px; /*  Optional: Limits the maximum width. Adjust as needed. */
+  margin: 0 auto; /* Center the container horizontally */
+  border: none; /*  Remove if you want a border later */
+}
+
+/* The clickable header */
+.collapsible-header {
+  background-color: #e8f5fc; /* Light blue from the image ribbon */
+  color: #0d6796;       /* Dark blue from the image text */
+  cursor: pointer;          /* Change cursor to indicate clickability */
+  padding: 18px;           /* Spacing around the text */
+  width: 100%;
+  text-align: left;         /* Align text to the left */
+  border: none;           /* Remove default button borders */
+  outline: none;          /* Remove focus outlines */
+  font-size: 24px;        /*  Heading font size - adjust as needed */
+  font-weight: bold;       /* Make the heading bold */
+  position: relative;       /* Needed for positioning the toggle icon */
+  border-top: 10px solid #0d6796;
+}
+
+/* The toggle icon (+/-) */
+.collapsible-header::after {
+    content: '+'; /*  Default to "+" */
+    font-size: 24px;
+    color: #0d6796;
+    font-weight: bold;
+    float: right;       /* Position the icon to the right */
+    margin-left: 5px;   /* Add some space between text and icon */
+    position: absolute;
+    top: 50%;
+    right: 18px;
+    transform: translateY(-50%);
+}
+
+/* Change icon to "-" when active */
+.collapsible-header.active::after {
+  content: "\2212"; /* Unicode minus sign */
+}
+
+/* The content to be collapsed */
+.collapsible-content {
+  padding: 0 18px;      /*  Match header padding (except top) */
+  background-color: #f8f4f1;       /* Light beige from the image */
+  overflow: hidden;        /*  Hide content when collapsed */
+  max-height: 0;           /*  Start with 0 height (collapsed) */
+  transition: max-height 0.3s ease-out; /*  Smooth transition for height */
+   border-bottom: 10px solid #0d6796;
+}
+
+/* Styling for the content text */
+.collapsible-content p {
+  color: #333;              /* Dark gray for body text */
+  font-size: 16px;          /*  Body font size - adjust */
+  line-height: 1.5;        /*  Line spacing */
+  margin-bottom: 1em;      /*  Space between paragraphs */
+}
+.collapsible-content p:first-of-type{
+    margin-top: 18px;
+}
+
+/*  Styling for the bullet points */
+.collapsible-content ul {
+  list-style-type: disc;   /*  Use bullet points */
+  margin-left: 20px;       /*  Indent the list */
+  padding-left: 0;      /* Remove extra padding added by some browsers */
+  color: #333;
+  font-size: 16px;
+}
+.collapsible-content ul li{
+    margin-bottom: 0.5em;
+}
+.collapsible-content h3 {
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 1.5em;
+	margin-bottom: 0.75em;
+    color: #d9480c;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="collapsible-container">
+  <button class="collapsible-header">STARTER GROWTH<br>4,500 QAR / MONTH</button>
+  <div class="collapsible-content">
+    <p>Perfect for businesses that need essential support for sales and marketing automation, with a smaller scope.</p>
+
+    <h3>Features:</h3>
+    <ul>
+        <li>Conversation AI</li>
+        <li>Unified Inbox</li>
+        <li>Sales Pipeline</li>
+        <li>Social Planner</li>
+        <li>Calendar Management</li>
+        <li>Reputation Management</li>
+        <li>Sites Management</li>
+    </ul>
+
+    <h3>Included Services:</h3>
+      <ul>
+        <li>Data Migration & Integrations (up to 2 integrations)</li>
+        <li>AI Training on company data (1 session)</li>
+        <li>Complete client support and training (limited to 5 tickets / month)</li>
+        <li>Done for You Sales (up to 20 prospects/month)</li>
+        <li>Done for You Marketing (up to 3 consultations/month)</li>
+        <li>Content Creation (up to 10 pieces/month)</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+var coll = document.getElementsByClassName("collapsible-header");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
