@@ -1,318 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teq Booster - Web Summit 2025</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /*  ---  CSS  ---  */
-        body, .form-group label {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 400;
-        }
-
-        h1, h2, h3, button[type="submit"] {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        :root {
-            --primary-blue: #0D3B66;
-            --primary-orange: #F95700;
-            --secondary-dark: #222;
-            --secondary-blue: #35A2D9;
-            --light-gray: #ccc;
-            --lighter-gray: #eee;
-            --white: #fff;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            color: #222;
-            background-color: #fff;
-        }
-
-        header {
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 10px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .logo-container {
-            margin-left: 20px;
-            flex: 1; /* Allow logo to take available space */
-            text-align: left; /* Align logo to the left */
-        }
-         /* Style for the navigation */
-        nav {
-        margin-right: 20px;
-        }
-
-        #logo {
-            max-width: 250px;
-            height: auto;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end; /* Align links to the right */
-        }
-        nav li {
-            margin: 0 0 0 15px;
-            position: relative;
-            display: inline-block;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-            transition: color 0.3s ease;
-            padding-bottom: 5px;
-            display: inline-block;
-            position: relative;
-            text-transform: uppercase;
-        }
-
-        nav a:hover {
-            color: #F95700;
-        }
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary-orange);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease;
-            transform: scaleX(0);
-        }
-        nav a:hover::after {
-            transform-origin: bottom left;
-            transform: scaleX(1);
-        }
-
-        /*  Hero Section Styles */
-        .hero {
-           background-color: var(--primary-blue); /* Use the dark blue background */
-            color: white;
-            text-align: center;
-            padding: 30px 20px; /* Reduced padding */
-            /* Remove the explicit height to allow content to determine height */
-            display: flex;
-            flex-direction: column;
-            justify-content: center; /* Vertically center content */
-            align-items: center;
-        }
-
-        .hero h1 {
-            font-size: 2em; /*  Adjust as needed */
-            margin-bottom: 0; /* Remove bottom margin */
-            font-weight: 700;
-            text-transform: uppercase;
-            line-height: 1.2;  /* Improve line spacing */
-        }
-        .hero p {
-            display: none;
-        }
-
-
-        /*  Collapsible Section Styles */
-        .collapsible-section {
-            margin-bottom: 0px; /* Remove margin */
-        }
-
-.collapsible-button {
-    background-color: #F95700;
-    color: white;
-    padding: 15px 20px;
-    border: none;
-    width: 100%;
-    text-align: left;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 0; /* Remove rounded corners */
-    transition: background-color 0.3s ease;
-    font-family: 'Outfit', sans-serif;
-    text-transform: uppercase;
-    position: relative; /* Needed for the pseudo-element */
-    overflow: hidden;  /* Hide overflowing parts of the pseudo-element */
-}
-        .collapsible-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0; /* Start from the left */
-            width: 0; /* Initially no width */
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.1); /* Dark overlay */
-            transition: width 0.3s ease; /* Animate the width */
-            z-index: 1; /* Ensure it's above the text but below any hover effects */
-        }
-
-         .collapsible-button:hover::after {
-            width: 100%; /* Full width on hover */
-        }
-
-
-        .collapsible-button:hover {
-            background-color: #c74600;
-            position: relative; /* Ensure hover effect is on top */
-            z-index: 2;
-        }
-         .collapsible-button .arrow {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.5em;
-            transition: transform 0.3s ease;
-        }
-
-        /* Rotate arrow when content is visible */
-        .collapsible-button.active .arrow {
-            transform: translateY(-50%) rotate(180deg);
-        }
-
-
-        .collapsible-content {
-            padding: 0; /* Remove padding */
-            display: none;
-            overflow: hidden;
-            background-color: #f9f9f9;
-            border: none; /* Remove borders */
-        }
-        .collapsible-content iframe {
-            border: none; /* Remove iframe border */
-        }
-
-        /*  Footer Styles */
-        footer {
-            background-color: #222;
-            color: #eee;
-            text-align: center;
-            padding: 10px 0;
-            font-size: 0.9em;
-        }
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: center;
-            }
-            nav ul{
-                justify-content: center;
-            }
-            nav li {
-                margin: 5px 10px;
-            }
-            .hero h1{
-                font-size: 1.8em;
-            }
-             .collapsible-button{
-                font-size: 16px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teq Booster Pricing Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function toggleAccordion(id) {
+      const element = document.getElementById(id);
+      if (element.classList.contains('hidden')) {
+        element.classList.remove('hidden');
+      } else {
+        element.classList.add('hidden');
+      }
+    }
+  </script>
 </head>
-<body>
-    <header>
-        <div class="logo-container">
-            <a href="#" id="logoLink">  <!-- Placeholder for logo link -->
-                <img src="teqbooster-logo.png" alt="Teq Booster Logo" id="logo">  <!-- Replace with your actual logo image -->
-            </a>
+<body class="bg-[#F5F1EB] font-sans">
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center p-4 bg-white shadow-md">
+    <img src="logo.png" alt="Teq Booster Logo" class="h-10">
+    <div class="space-x-6">
+      <a href="https://teqbooster.my.canva.site/company-profile" class="text-gray-700 hover:text-orange-500">Company Profile</a>
+      <a href="https://teqbooster.my.canva.site/features-and-services-guide" class="text-gray-700 hover:text-orange-500">Features & Services</a>
+      <a href="https://teqbooster.com/" class="text-gray-700 hover:text-orange-500">Free AI Chatbot Widget</a>
+      <a href="https://links.teqbooster.com/widget/survey/bSajo3h3J5TzSpDyU0s3" class="text-gray-700 hover:text-orange-500">Custom Price Quote</a>
+      <a href="https://teqbooster.my.canva.site/contact-us" class="text-gray-700 hover:text-orange-500">Contact Information</a>
+    </div>
+  </nav>
+
+  <!-- Main Section -->
+  <section class="p-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Pricing Packages -->
+      <div class="w-full lg:w-1/2">
+        <h2 class="text-3xl font-bold text-center text-white bg-[#E94F1D] rounded-t-lg py-2">Pricing</h2>
+        <div class="space-y-4 p-4 bg-white shadow-lg rounded-b-lg">
+          <!-- Conversation AI Packages -->
+          <div>
+            <button class="w-full text-left bg-[#E94F1D] text-white py-2 px-4 rounded" onclick="toggleAccordion('ai-packages')">Conversation AI Packages</button>
+            <div id="ai-packages" class="mt-2 p-4 bg-gray-100 rounded grid grid-cols-1 md:grid-cols-3 gap-4 hidden">
+              <div class="bg-white shadow-md p-4 rounded">
+                <h3 class="font-bold text-lg">Free Package</h3>
+                <p class="font-semibold">0 QAR / Month</p>
+                <p>Perfect for businesses starting their journey with AI-driven communication.</p>
+                <ul class="list-disc ml-5 mt-2">
+                  <li>Website Chat Widget</li>
+                  <li>10 Additional Custom FAQs Automated</li>
+                  <li>Replies to Social Media Comments: Facebook, Instagram</li>
+                </ul>
+                <p class="mt-2"><strong>Included Services:</strong> Basic client support & FAQs (limited to email support, response within 48 hours)</p>
+              </div>
+              <div class="bg-white shadow-md p-4 rounded">
+                <h3 class="font-bold text-lg">Pro AI Package</h3>
+                <p class="font-semibold">1500 QAR / Month</p>
+                <p>Ideal for growing businesses looking to streamline communication across multiple platforms.</p>
+                <ul class="list-disc ml-5 mt-2">
+                  <li>Multilingual AI Assistant</li>
+                  <li>Automated Replies to Direct Messages (DMs): Instagram, Facebook, WhatsApp</li>
+                  <li>AI Chatbot for Websites</li>
+                  <li>Personalized Conversation Flows Unified Inbox</li>
+                </ul>
+              </div>
+              <div class="bg-white shadow-md p-4 rounded">
+                <h3 class="font-bold text-lg">Premium AI Package</h3>
+                <p class="font-semibold">2000 QAR / Month</p>
+                <p>Designed for businesses that prioritize advanced customer engagement and reputation management.</p>
+                <ul class="list-disc ml-5 mt-2">
+                  <li>All features from Pro AI Package</li>
+                  <li>Automated AI Replies to Reviews</li>
+                  <li>Reviews Management Dashboard</li>
+                  <li>Review Requests Management</li>
+                </ul>
+                <p class="mt-2"><strong>Included Services:</strong> AI Training: Comprehensive training on your company’s data. Complete Client Support and Training. Ongoing support to optimize your AI solution.</p>
+              </div>
+            </div>
+          </div>
+          <!-- General Pricing -->
+          <button class="w-full text-left bg-[#E94F1D] text-white py-2 px-4 rounded" onclick="toggleAccordion('general-pricing')">General Pricing</button>
+          <div id="general-pricing" class="mt-2 p-4 bg-gray-100 rounded grid grid-cols-1 md:grid-cols-2 gap-4 hidden">
+            <div class="bg-white shadow-md p-4 rounded">
+              <h3 class="font-bold text-lg">Basic Package</h3>
+              <p class="font-semibold">1,500 QAR / Month</p>
+              <ul class="list-disc ml-5 mt-2">
+                <li>Conversation AI</li>
+                <li>Unified Inbox</li>
+                <li>Sales Pipeline</li>
+                <li>Social Planner</li>
+                <li>Calendar Management</li>
+                <li>Reputation Management</li>
+                <li>Sites Management</li>
+                <li>Courses Management</li>
+              </ul>
+            </div>
+            <div class="bg-white shadow-md p-4 rounded">
+              <h3 class="font-bold text-lg">Pro Package</h3>
+              <p class="font-semibold">5,000 QAR / Month</p>
+              <ul class="list-disc ml-5 mt-2">
+                <li>All features from Basic</li>
+                <li>Data Migration & Integrations (up to 2 sessions)</li>
+                <li>AI Training on company data</li>
+                <li>Complete Client Support and Training (up to 8 hours/month)</li>
+                <li>Advanced Customizations</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Done For You Solutions -->
+          <button class="w-full text-left bg-[#E94F1D] text-white py-2 px-4 rounded" onclick="toggleAccordion('done-for-you')">Done For You Solutions</button>
+          <div id="done-for-you" class="mt-2 p-4 bg-gray-100 rounded grid grid-cols-1 md:grid-cols-3 gap-4 hidden">
+            <div class="bg-white shadow-md p-4 rounded">
+              <h3 class="font-bold text-lg">Starter Package</h3>
+              <p class="font-semibold">4,500 QAR / Month</p>
+              <ul class="list-disc ml-5 mt-2">
+                <li>Essential support for sales & marketing automation</li>
+                <li>Data Migration & Integrations (up to 2)</li>
+                <li>AI Training (1 session)</li>
+                <li>Content Creation (up to 10 pieces/month)</li>
+              </ul>
+            </div>
+            <div class="bg-white shadow-md p-4 rounded">
+              <h3 class="font-bold text-lg">Growth Package</h3>
+              <p class="font-semibold">7,000 QAR / Month</p>
+              <ul class="list-disc ml-5 mt-2">
+                <li>Advanced Customization & Support</li>
+                <li>Data Migration & Integrations (up to 5)</li>
+                <li>Email/SMS Marketing Campaigns (1 per month)</li>
+                <li>Content Creation (up to 20 pieces/month)</li>
+              </ul>
+            </div>
+            <div class="bg-white shadow-md p-4 rounded">
+              <h3 class="font-bold text-lg">Ultimate Success Package</h3>
+              <p class="font-semibold">Starting from 10,000 QAR / Month</p>
+              <ul class="list-disc ml-5 mt-2">
+                <li>Comprehensive service with development support</li>
+                <li>Unlimited AI Training & Support</li>
+                <li>Done-for-you Website & App Development</li>
+                <li>Content Creation (up to 30 pieces/month)</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="https://teqbooster.my.canva.site/company-profile">Company Profile</a></li>
-                <li><a href="https://teqbooster.my.canva.site/features-and-services-guide">Features & Services</a></li>
-                <li><a href="https://teqbooster.com/">Free AI Chatbot Widget</a></li>
-                <li><a href="https://links.teqbooster.com/widget/survey/bSajo3h3J5TzSpDyU0s3">Custom Price Quote</a></li>
-                <li><a href="https://teqbooster.my.canva.site/contact-us">Contact Information</a></li>
+      </div>
 
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero">
-            <h1>maximizing value<br>Teq Booster vs. individual solutions</h1>
-             <!-- QR code or other elements can go here -->
-        </section>
-
-        <section class="collapsible-section">
-            <button class="collapsible-button" data-target="pricingDetails">Pricing Details<span class="arrow">↓</span></button>
-            <div class="collapsible-content" id="pricingDetails">
-                <iframe src="pricing-details.pdf" width="100%" height="500px"></iframe>
-            </div>
-        </section>
-
-        <section class="collapsible-section">
-            <button class="collapsible-button" data-target="comparePrices">Compare Our Prices <span class="arrow">↓</span></button>
-            <div class="collapsible-content" id="comparePrices">
-                <iframe src="compare-prices.pdf" width="100%" height="500px"></iframe>
-            </div>
-        </section>
-
-       <!-- Add more collapsible sections as needed -->
-
-    </main>
-
-    <footer>
-        <p>© 2023 Teq Booster. All rights reserved. | +974 5990 7500 | contact@teqbooster.com</p>
-    </footer>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const collapsibleButtons = document.querySelectorAll('.collapsible-button');
-
-    collapsibleButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const targetId = this.dataset.target;
-            const targetContent = document.getElementById(targetId);
-
-            // Toggle the display of the target content
-            if (targetContent.style.display === 'block') {
-                targetContent.style.display = 'none';
-                 this.classList.remove('active');
-            } else {
-                targetContent.style.display = 'block';
-                this.classList.add('active');
-            }
-
-            // Optionally, close other open sections
-            collapsibleButtons.forEach(otherButton => {
-                if (otherButton !== button) {
-                    const otherTargetId = otherButton.dataset.target;
-                    const otherTargetContent = document.getElementById(otherTargetId);
-                    otherTargetContent.style.display = 'none';
-                     otherButton.classList.remove('active');
-                }
-            });
-        });
-    });
-
-     // Set the logo link (replace '#' with your desired URL later)
-    const logoLink = document.getElementById('logoLink');
-    logoLink.href = '#'; // Replace with actual link
-
-});
-    </script>
+      <!-- Compare Our Prices Section (updated from PDF) -->
+      <div class="w-full lg:w-1/2">
+        <h2 class="text-3xl font-bold text-center text-white bg-[#E94F1D] rounded-t-lg py-2">Compare Our Prices</h2>
+        <div class="p-4 bg-white shadow-lg rounded-b-lg">
+          <h3 class="text-lg font-semibold mb-4 text-center">Maximizing Value</h3>
+          <table class="w-full text-sm text-left text-gray-700">
+            <thead>
+              <tr class="bg-gray-200">
+                <th class="py-2 px-2">No</th>
+                <th class="py-2 px-2">Feature</th>
+                <th class="py-2 px-2">Estimated Price (QAR/month)</th>
+                <th class="py-2 px-2">Competitors</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>01</td><td>CRM & Pipeline Management</td><td>QAR 910</td><td>ActiveCampaign</td></tr>
+              <tr><td>02</td><td>Unlimited Sales Funnels</td><td>QAR 3,629</td><td>ClickFunnels</td></tr>
+              <tr><td>03</td><td>Website Builder</td><td>QAR 214</td><td>Wix, GoDaddy</td></tr>
+              <tr><td>04</td><td>Surveys & Forms</td><td>QAR 360</td><td>Typeform</td></tr>
+              <tr><td>05</td><td>Email Marketing</td><td>QAR 1,816</td><td>Mailchimp</td></tr>
+              <tr><td>06</td><td>2-Way SMS Marketing</td><td>QAR 1,088</td><td>Twilio</td></tr>
+              <tr><td>07</td><td>Booking & Appointments</td><td>QAR 214</td><td>Calendly</td></tr>
+              <tr><td>08</td><td>Workflow Automations</td><td>QAR 5,456</td><td>Zapier</td></tr>
+              <tr><td>09</td><td>Courses/Products</td><td>QAR 1,816</td><td>Teachable</td></tr>
+              <tr><td>10</td><td>Reputation Management</td><td>QAR 1,452</td><td>Birdeye</td></tr>
+              <tr><td>11</td><td>Tracking & Analytics</td><td>QAR 1,816</td><td>Google Analytics</td></tr>
+              <tr><td>12</td><td>Communities</td><td>QAR 757</td><td>Mighty Networks</td></tr>
+            </tbody>
+          </table>
+           <div class="mt-4 p-4 text-center bg-[#E94F1D] text-white font-bold rounded">
+            Total Estimated Cost: QAR 20,618 / Month
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
