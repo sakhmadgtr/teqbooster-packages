@@ -1,143 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Collapsible Section</title>
-<style>
-/* Overall container */
-.collapsible-container {
-  font-family: sans-serif; /* Use a generic sans-serif for now.  Change if needed */
-  width: 100%; /* Make it take up the full width of its container (Canva embed block) */
-  max-width: 600px; /*  Optional: Limits the maximum width. Adjust as needed. */
-  margin: 0 auto; /* Center the container horizontally */
-  border: none; /*  Remove if you want a border later */
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teq Booster - Web Summit 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /*  ---  ALL CSS CODE GOES HERE  ---  */
+        /*  Font Imports (Google Fonts) */
+        /* Barding Font Alternative (Using a similar sans-serif) */
+        body, .form-group label { /* Apply Outfit to most text */
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400; /* Regular weight */
+        }
 
-/* The clickable header */
-.collapsible-header {
-  background-color: #e8f5fc; /* Light blue from the image ribbon */
-  color: #0d6796;       /* Dark blue from the image text */
-  cursor: pointer;          /* Change cursor to indicate clickability */
-  padding: 18px;           /* Spacing around the text */
-  width: 100%;
-  text-align: left;         /* Align text to the left */
-  border: none;           /* Remove default button borders */
-  outline: none;          /* Remove focus outlines */
-  font-size: 24px;        /*  Heading font size - adjust as needed */
-  font-weight: bold;       /* Make the heading bold */
-  position: relative;       /* Needed for positioning the toggle icon */
-  border-top: 10px solid #0d6796;
-}
-
-/* The toggle icon (+/-) */
-.collapsible-header::after {
-    content: '+'; /*  Default to "+" */
-    font-size: 24px;
-    color: #0d6796;
-    font-weight: bold;
-    float: right;       /* Position the icon to the right */
-    margin-left: 5px;   /* Add some space between text and icon */
-    position: absolute;
-    top: 50%;
-    right: 18px;
-    transform: translateY(-50%);
-}
-
-/* Change icon to "-" when active */
-.collapsible-header.active::after {
-  content: "\2212"; /* Unicode minus sign */
-}
-
-/* The content to be collapsed */
-.collapsible-content {
-  padding: 0 18px;      /*  Match header padding (except top) */
-  background-color: #f8f4f1;       /* Light beige from the image */
-  overflow: hidden;        /*  Hide content when collapsed */
-  max-height: 0;           /*  Start with 0 height (collapsed) */
-  transition: max-height 0.3s ease-out; /*  Smooth transition for height */
-   border-bottom: 10px solid #0d6796;
-}
-
-/* Styling for the content text */
-.collapsible-content p {
-  color: #333;              /* Dark gray for body text */
-  font-size: 16px;          /*  Body font size - adjust */
-  line-height: 1.5;        /*  Line spacing */
-  margin-bottom: 1em;      /*  Space between paragraphs */
-}
-.collapsible-content p:first-of-type{
-    margin-top: 18px;
-}
-
-/*  Styling for the bullet points */
-.collapsible-content ul {
-  list-style-type: disc;   /*  Use bullet points */
-  margin-left: 20px;       /*  Indent the list */
-  padding-left: 0;      /* Remove extra padding added by some browsers */
-  color: #333;
-  font-size: 16px;
-}
-.collapsible-content ul li{
-    margin-bottom: 0.5em;
-}
-.collapsible-content h3 {
-	font-size: 18px;
-	font-weight: bold;
-	margin-top: 1.5em;
-	margin-bottom: 0.75em;
-    color: #d9480c;
-}
+        h1, h2, h3, button[type="submit"] { /* Apply Barding-like style to headings & button */
+            font-family: 'Outfit', sans-serif; /*  Use Outfit for headings, but make it bold */
+            font-weight: 700;  /* Bold weight to mimic Barding */
+            text-transform: uppercase; /*  If Barding is typically uppercase */
+        }
 
 
-</style>
+        /*  Colors (From Brand Board) */
+        :root {
+            --primary-blue: #0D3B66;   /* Dark Blue */
+            --primary-orange: #F95700; /* Orange */
+            --secondary-dark: #222;    /* Dark Gray (Assuming for text) */
+            --secondary-blue: #35A2D9; /* Lighter Blue (Assuming for accents) */
+            --light-gray: #ccc;
+            --lighter-gray: #eee; /* Even lighter gray for input backgrounds */
+            --white: #fff;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #222;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: #0D3B66;
+            color: white;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            margin-left: 20px;
+        }
+
+        #logo {
+            max-width: 250px;
+            height: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin-right: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #F95700;
+        }
+
+        /*  Hero Section Styles */
+        .hero {
+            background-color: #0D3B66;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 1.5em;
+        }
+
+        /*  Collapsible Section Styles */
+        .collapsible-section {
+            margin-bottom: 20px;
+        }
+
+        .collapsible-button {
+            background-color: #F95700; /* Orange */
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .collapsible-button:hover {
+            background-color: #c74600; /* Darker orange on hover */
+        }
+
+        .collapsible-content {
+            padding: 0 20px;
+            display: none; /* Hidden by default */
+            overflow: hidden;
+            background-color: #f9f9f9; /* Light gray background */
+            border: 1px solid #ddd;
+            border-top: none; /* Remove top border to connect visually with button */
+            border-radius: 0 0 5px 5px; /* Round bottom corners */
+        }
+
+        /*  Footer Styles */
+        footer {
+            background-color: #222; /* Dark gray */
+            color: #eee;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.9em;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column; /* Stack logo and nav on smaller screens */
+                align-items: center;
+            }
+            nav ul{
+                justify-content: center;
+            }
+            nav li {
+                margin: 5px 10px; /* Adjust spacing for smaller screens */
+            }
+            .hero h1{
+                font-size: 2em;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="logo-container">
+            <a href="#" id="logoLink">  <!-- Placeholder for logo link -->
+                <img src="teqbooster-logo.png" alt="Teq Booster Logo" id="logo">  <!-- Replace with your actual logo image -->
+            </a>
+        </div>
+        <nav>
+        <ul>
+                <li><a href="https://teqbooster.my.canva.site/company-profile">Company Profile</a></li>
+                <li><a href="https://teqbooster.my.canva.site/features-and-services-guide">Features & Services</a></li>
+                <li><a href="https://teqbooster.com/">Free AI Chatbot Widget</a></li>
+                <li><a href="https://links.teqbooster.com/widget/survey/bSajo3h3J5TzSpDyU0s3">Custom Price Quote</a></li>
+                <li><a href="https://teqbooster.my.canva.site/contact-us">Contact Information</a></li>
 
-<div class="collapsible-container">
-  <button class="collapsible-header">STARTER GROWTH<br>4,500 QAR / MONTH</button>
-  <div class="collapsible-content">
-    <p>Perfect for businesses that need essential support for sales and marketing automation, with a smaller scope.</p>
+            </ul>
+        </nav>
+    </header>
 
-    <h3>Features:</h3>
-    <ul>
-        <li>Conversation AI</li>
-        <li>Unified Inbox</li>
-        <li>Sales Pipeline</li>
-        <li>Social Planner</li>
-        <li>Calendar Management</li>
-        <li>Reputation Management</li>
-        <li>Sites Management</li>
-    </ul>
+    <main>
+        <section class="hero">
+        <h1>Empowering Qatari SMEs with <br> AI-Driven Digital Solutions</h1>
+            <p>Visit Teq Booster at Web Summit 2025 to discover how our all-in-one platform can streamline your operations, enhance customer engagement, and drive growth.</p>
+            <!-- You could add a QR code image here, if desired -->
+        </section>
 
-    <h3>Included Services:</h3>
-      <ul>
-        <li>Data Migration & Integrations (up to 2 integrations)</li>
-        <li>AI Training on company data (1 session)</li>
-        <li>Complete client support and training (limited to 5 tickets / month)</li>
-        <li>Done for You Sales (up to 20 prospects/month)</li>
-        <li>Done for You Marketing (up to 3 consultations/month)</li>
-        <li>Content Creation (up to 10 pieces/month)</li>
-    </ul>
-  </div>
-</div>
+        <section class="collapsible-section">
+            <button class="collapsible-button" data-target="pricingDetails">Pricing Details</button>
+            <div class="collapsible-content" id="pricingDetails">
+                <!--  Option 1: Embed PDF using an iframe (Simplest) -->
+                <iframe src="pricing-details.pdf" width="100%" height="500px"></iframe>
 
-<script>
-var coll = document.getElementsByClassName("collapsible-header");
-var i;
+                <!--  Option 2: Link to PDF (Most Reliable) -->
+                <!-- <p>Download our detailed pricing information: <a href="pricing-details.pdf" target="_blank">Pricing Details (PDF)</a></p> -->
 
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    }
-  });
-}
-</script>
+                 <!-- Option 3: Summarize and Link (Best User Experience) -->
+                <!-- <p>We offer flexible pricing plans to suit your needs.  View our pricing summary below, or download the full details:</p>
+                <p><a href="pricing-details.pdf" target="_blank">Download Full Pricing Details (PDF)</a></p>
+                 (Summarize key pricing points here, using HTML) -->
 
+            </div>
+        </section>
+
+        <section class="collapsible-section">
+            <button class="collapsible-button" data-target="comparePrices">Compare Our Prices</button>
+            <div class="collapsible-content" id="comparePrices">
+                <!-- Option 1: Embed PDF using an iframe -->
+                 <iframe src="compare-prices.pdf" width="100%" height="500px"></iframe>
+
+                <!-- Option 2: Link to PDF -->
+              <!--   <p>See how Teq Booster stacks up against the competition: <a href="compare-prices.pdf" target="_blank">Compare Prices (PDF)</a></p> -->
+
+                <!-- Option 3:  Recreate the Comparison Table in HTML (Most Work, Best Control) -->
+                <!--  (If the comparison is complex, a PDF might be better.  If it's a simple table, you could recreate it directly in HTML/CSS for better responsiveness and control) -->
+            </div>
+        </section>
+
+       <!-- Add more collapsible sections as needed -->
+
+    </main>
+
+    <footer>
+    <p>© 2023 Teq Booster. All rights reserved. |  +974 5990 7500 | contact@teqbooster.com</p>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const collapsibleButtons = document.querySelectorAll('.collapsible-button');
+
+    collapsibleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = this.dataset.target;
+            const targetContent = document.getElementById(targetId);
+
+            // Toggle the display of the target content
+            if (targetContent.style.display === 'block') {
+                targetContent.style.display = 'none';
+            } else {
+                targetContent.style.display = 'block';
+            }
+
+            // Optionally, close other open sections
+            collapsibleButtons.forEach(otherButton => {
+                if (otherButton !== button) {
+                    const otherTargetId = otherButton.dataset.target;
+                    const otherTargetContent = document.getElementById(otherTargetId);
+                    otherTargetContent.style.display = 'none';
+                }
+            });
+        });
+    });
+
+     // Set the logo link (replace '#' with your desired URL later)
+    const logoLink = document.getElementById('logoLink');
+    logoLink.href = '#'; // Replace with actual link
+      // Prevent default action for now, since it's a placeholder
+});
+    </script>
 </body>
 </html>
