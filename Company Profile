@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teq Booster Pricing Page</title>
+    <!-- Tailwind CSS (from your original code - I'm assuming you intend to use it) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS (Overriding and supplementing Tailwind) */
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #F5F1EB; /* Light beige background */
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem; /* More padding */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Wrap on smaller screens */
+        }
+
+        .navbar-logo {
+            max-height: 60px; /* Adjust as needed */
+            margin-right: 2rem; /* Space between logo and links */
+        }
+
+        .navbar-links {
+            display: flex;
+            flex-wrap: wrap; /* Wrap links on smaller screens */
+            gap: 1rem; /* Consistent spacing between links */
+            align-items: center; /* Vertically center links */
+        }
+.navbar-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #E94F1D;
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+            transform: scaleX(0);
+        }
+        .navbar-links a:hover::after {
+            transform-origin: bottom left;
+            transform: scaleX(1);
+        }
+        .navbar-links a {
+            color: #222; /* Dark gray text */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            text-transform: uppercase; /* Uppercase as per your design */
+            font-size: 0.875rem; /* Slightly smaller font size */
+            padding-bottom: 0.25rem;
+            position: relative;
+        }
+
+        .navbar-links a:hover {
+            color: #E94F1D; /* Orange on hover */
+        }
+
+        /* Heading Styling */
+        .main-heading {
+            text-align: center;
+            font-size: 2.5rem; /* Adjust as needed */
+            font-weight: 700;
+            color: #0D99C6; /* Use the provided blue color */
+            text-transform: uppercase;
+            margin-top: 1rem; /* Space below navbar */
+            margin-bottom: 2rem; /* Space below heading */
+
+        }
+
+        /* Collapsible Button Styling */
+        .accordion-button {
+            background-color: #E94F1D; /* Orange */
+            color: white;
+            width: 100%;
+            text-align: left;
+            padding: 1rem;
+            border: none;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+        }
+    /* Overall container for responsiveness */
+        .container {
+           max-width: 1200px; /* Or your preferred max-width */
+           margin-left: auto;
+           margin-right: auto;
+           padding-left: 1rem;
+           padding-right: 1rem;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column; /* Stack logo and nav on smaller screens */
+                align-items: center;
+                 padding: 1rem; /*Reduced Padding*/
+            }
+             .main-heading{
+                font-size: 2rem;
+             }
+            .navbar-links {
+                margin-top: 1rem; /* Space between logo and links */
+                justify-content: center;
+                gap: 0.75rem;
+            }
+            .navbar-links a{
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+    <script>
+        function toggleAccordion(id) {
+          const element = document.getElementById(id);
+          if (element.classList.contains('hidden')) {
+            element.classList.remove('hidden');
+          } else {
+            element.classList.add('hidden');
+          }
+        }
+    </script>
+</head>
+<body class="font-sans">
+   <div class = "container">
+      <!-- Navbar -->
+  <nav class="navbar">
+    <a href="https://teqbooster.my.canva.site/landing-page" id="logoLink">
+        <img src="teq booster logo.png" alt="Teq Booster Logo" class="navbar-logo"> <!-- Replace with your logo -->
+    </a>
+
+    <div class="navbar-links">
+      <a href="https://teqbooster.my.canva.site/company-profile">Company Profile</a>
+      <a href="https://teqbooster.my.canva.site/features-and-services-guide">Features & Services</a>
+      <a href="https://teqbooster.com/">Free AI Chatbot Widget</a>
+      <a href="https://links.teqbooster.com/widget/survey/bSajo3h3J5TzSpDyU0s3">Custom Price Quote</a>
+      <a href="https://teqbooster.my.canva.site/contact-us">Contact Information</a>
+    </div>
+  </nav>
+
+  <!-- Main Heading -->
+  <h2 class="main-heading">Pricing</h2>
+   </div>
+  <!-- Main Section  -->
+<section class="py-12">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+      <!-- Canva Embed -->
+      <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+                  padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+                  border-radius: 8px; will-change: transform;">
+        <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                src="https://www.canva.com/design/DAGfQ012jjU/5SWCnCUYaz4bwOn-n5BBCA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+        </iframe>
+      </div>
+      <!-- Download Link -->
+      <div class="text-center mt-4 pb-4">
+        <a href="https://www.papermark.io/view/cm7bqn3a3000ccfrm6x9oaxli" target="_blank" rel="noopener" class="inline-block bg-[#E94F1D] hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">
+          Download Pricing Details
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
