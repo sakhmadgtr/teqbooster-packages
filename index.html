@@ -6,31 +6,28 @@
     <title>Teq Booster - Web Summit 2025</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /*  ---  ALL CSS CODE GOES HERE  ---  */
-        /*  Font Imports (Google Fonts) */
-        /* Barding Font Alternative (Using a similar sans-serif) */
-        body, .form-group label { /* Apply Outfit to most text */
+        /*  ---  CSS  ---  */
+        body, .form-group label {
             font-family: 'Outfit', sans-serif;
-            font-weight: 400; /* Regular weight */
+            font-weight: 400;
         }
 
-        h1, h2, h3, button[type="submit"] { /* Apply Barding-like style to headings & button */
-            font-family: 'Outfit', sans-serif; /*  Use Outfit for headings, but make it bold */
-            font-weight: 700;  /* Bold weight to mimic Barding */
-            text-transform: uppercase; /*  If Barding is typically uppercase */
+        h1, h2, h3, button[type="submit"] {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
-
-        /*  Colors (From Brand Board) */
         :root {
-            --primary-blue: #0D3B66;   /* Dark Blue */
-            --primary-orange: #F95700; /* Orange */
-            --secondary-dark: #222;    /* Dark Gray (Assuming for text) */
-            --secondary-blue: #35A2D9; /* Lighter Blue (Assuming for accents) */
+            --primary-blue: #0D3B66;
+            --primary-orange: #F95700;
+            --secondary-dark: #222;
+            --secondary-blue: #35A2D9;
             --light-gray: #ccc;
-            --lighter-gray: #eee; /* Even lighter gray for input backgrounds */
+            --lighter-gray: #eee;
             --white: #fff;
         }
+
         body {
             font-family: 'Outfit', sans-serif;
             margin: 0;
@@ -41,7 +38,7 @@
         }
 
         header {
-            background-color: #0D3B66;
+            background-color: var(--primary-blue);
             color: white;
             padding: 10px 0;
             display: flex;
@@ -52,6 +49,12 @@
 
         .logo-container {
             margin-left: 20px;
+            flex: 1; /* Allow logo to take available space */
+            text-align: left; /* Align logo to the left */
+        }
+         /* Style for the navigation */
+        nav {
+        margin-right: 20px;
         }
 
         #logo {
@@ -62,85 +65,146 @@
         nav ul {
             list-style: none;
             padding: 0;
-            margin-right: 20px;
+            margin: 0;
             display: flex;
             flex-wrap: wrap;
+            justify-content: flex-end; /* Align links to the right */
         }
-
         nav li {
-            margin: 0 15px;
+            margin: 0 0 0 15px;
+            position: relative;
+            display: inline-block;
         }
-
         nav a {
             color: white;
             text-decoration: none;
             font-weight: bold;
             font-size: 16px;
             transition: color 0.3s ease;
+            padding-bottom: 5px;
+            display: inline-block;
+            position: relative;
+            text-transform: uppercase;
         }
 
         nav a:hover {
             color: #F95700;
         }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-orange);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+            transform: scaleX(0);
+        }
+        nav a:hover::after {
+            transform-origin: bottom left;
+            transform: scaleX(1);
+        }
 
         /*  Hero Section Styles */
         .hero {
-            background-color: #0D3B66;
+           background-color: var(--primary-blue); /* Use the dark blue background */
             color: white;
             text-align: center;
-            padding: 50px 20px;
+            padding: 30px 20px; /* Reduced padding */
+            /* Remove the explicit height to allow content to determine height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically center content */
+            align-items: center;
         }
 
         .hero h1 {
-            font-size: 2.5em;
-            margin-bottom: 0.5em;
+            font-size: 2em; /*  Adjust as needed */
+            margin-bottom: 0; /* Remove bottom margin */
             font-weight: 700;
             text-transform: uppercase;
+            line-height: 1.2;  /* Improve line spacing */
+        }
+        .hero p {
+            display: none;
         }
 
-        .hero p {
-            font-size: 1.2em;
-            margin-bottom: 1.5em;
-        }
 
         /*  Collapsible Section Styles */
         .collapsible-section {
-            margin-bottom: 20px;
+            margin-bottom: 0px; /* Remove margin */
         }
 
-        .collapsible-button {
-            background-color: #F95700; /* Orange */
-            color: white;
-            padding: 15px 20px;
-            border: none;
-            width: 100%;
-            text-align: left;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 5px; /* Rounded corners */
-            transition: background-color 0.3s ease;
-            font-family: 'Outfit', sans-serif;
-            text-transform: uppercase;
+.collapsible-button {
+    background-color: #F95700;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0; /* Remove rounded corners */
+    transition: background-color 0.3s ease;
+    font-family: 'Outfit', sans-serif;
+    text-transform: uppercase;
+    position: relative; /* Needed for the pseudo-element */
+    overflow: hidden;  /* Hide overflowing parts of the pseudo-element */
+}
+        .collapsible-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0; /* Start from the left */
+            width: 0; /* Initially no width */
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1); /* Dark overlay */
+            transition: width 0.3s ease; /* Animate the width */
+            z-index: 1; /* Ensure it's above the text but below any hover effects */
         }
+
+         .collapsible-button:hover::after {
+            width: 100%; /* Full width on hover */
+        }
+
 
         .collapsible-button:hover {
-            background-color: #c74600; /* Darker orange on hover */
+            background-color: #c74600;
+            position: relative; /* Ensure hover effect is on top */
+            z-index: 2;
+        }
+         .collapsible-button .arrow {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
         }
 
+        /* Rotate arrow when content is visible */
+        .collapsible-button.active .arrow {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+
         .collapsible-content {
-            padding: 0 20px;
-            display: none; /* Hidden by default */
+            padding: 0; /* Remove padding */
+            display: none;
             overflow: hidden;
-            background-color: #f9f9f9; /* Light gray background */
-            border: 1px solid #ddd;
-            border-top: none; /* Remove top border to connect visually with button */
-            border-radius: 0 0 5px 5px; /* Round bottom corners */
+            background-color: #f9f9f9;
+            border: none; /* Remove borders */
+        }
+        .collapsible-content iframe {
+            border: none; /* Remove iframe border */
         }
 
         /*  Footer Styles */
         footer {
-            background-color: #222; /* Dark gray */
+            background-color: #222;
             color: #eee;
             text-align: center;
             padding: 10px 0;
@@ -149,17 +213,20 @@
         /* Responsive adjustments */
         @media (max-width: 768px) {
             header {
-                flex-direction: column; /* Stack logo and nav on smaller screens */
+                flex-direction: column;
                 align-items: center;
             }
             nav ul{
                 justify-content: center;
             }
             nav li {
-                margin: 5px 10px; /* Adjust spacing for smaller screens */
+                margin: 5px 10px;
             }
             .hero h1{
-                font-size: 2em;
+                font-size: 1.8em;
+            }
+             .collapsible-button{
+                font-size: 16px;
             }
         }
     </style>
@@ -168,11 +235,11 @@
     <header>
         <div class="logo-container">
             <a href="#" id="logoLink">  <!-- Placeholder for logo link -->
-                <img src="teq booster logo.png" alt="Teq Booster Logo" id="logo">  <!-- Replace with your actual logo image -->
+                <img src="teqbooster-logo.png" alt="Teq Booster Logo" id="logo">  <!-- Replace with your actual logo image -->
             </a>
         </div>
         <nav>
-        <ul>
+            <ul>
                 <li><a href="https://teqbooster.my.canva.site/company-profile">Company Profile</a></li>
                 <li><a href="https://teqbooster.my.canva.site/features-and-services-guide">Features & Services</a></li>
                 <li><a href="https://teqbooster.com/">Free AI Chatbot Widget</a></li>
@@ -185,39 +252,21 @@
 
     <main>
         <section class="hero">
-        <h1>Empowering Qatari SMEs with <br> AI-Driven Digital Solutions</h1>
-            <p>Visit Teq Booster at Web Summit 2025 to discover how our all-in-one platform can streamline your operations, enhance customer engagement, and drive growth.</p>
-            <!-- You could add a QR code image here, if desired -->
+            <h1>maximizing value<br>Teq Booster vs. individual solutions</h1>
+             <!-- QR code or other elements can go here -->
         </section>
 
         <section class="collapsible-section">
-            <button class="collapsible-button" data-target="pricingDetails">Pricing Details</button>
+            <button class="collapsible-button" data-target="pricingDetails">Pricing Details<span class="arrow">↓</span></button>
             <div class="collapsible-content" id="pricingDetails">
-                <!--  Option 1: Embed PDF using an iframe (Simplest) -->
                 <iframe src="pricing-details.pdf" width="100%" height="500px"></iframe>
-
-                <!--  Option 2: Link to PDF (Most Reliable) -->
-                <!-- <p>Download our detailed pricing information: <a href="pricing-details.pdf" target="_blank">Pricing Details (PDF)</a></p> -->
-
-                 <!-- Option 3: Summarize and Link (Best User Experience) -->
-                <!-- <p>We offer flexible pricing plans to suit your needs.  View our pricing summary below, or download the full details:</p>
-                <p><a href="pricing-details.pdf" target="_blank">Download Full Pricing Details (PDF)</a></p>
-                 (Summarize key pricing points here, using HTML) -->
-
             </div>
         </section>
 
         <section class="collapsible-section">
-            <button class="collapsible-button" data-target="comparePrices">Compare Our Prices</button>
+            <button class="collapsible-button" data-target="comparePrices">Compare Our Prices <span class="arrow">↓</span></button>
             <div class="collapsible-content" id="comparePrices">
-                <!-- Option 1: Embed PDF using an iframe -->
-                 <iframe src="compare-prices.pdf" width="100%" height="500px"></iframe>
-
-                <!-- Option 2: Link to PDF -->
-              <!--   <p>See how Teq Booster stacks up against the competition: <a href="compare-prices.pdf" target="_blank">Compare Prices (PDF)</a></p> -->
-
-                <!-- Option 3:  Recreate the Comparison Table in HTML (Most Work, Best Control) -->
-                <!--  (If the comparison is complex, a PDF might be better.  If it's a simple table, you could recreate it directly in HTML/CSS for better responsiveness and control) -->
+                <iframe src="compare-prices.pdf" width="100%" height="500px"></iframe>
             </div>
         </section>
 
@@ -226,7 +275,7 @@
     </main>
 
     <footer>
-    <p>© 2023 Teq Booster. All rights reserved. |  +974 5990 7500 | contact@teqbooster.com</p>
+        <p>© 2023 Teq Booster. All rights reserved. | +974 5990 7500 | contact@teqbooster.com</p>
     </footer>
 
     <script>
@@ -241,8 +290,10 @@
             // Toggle the display of the target content
             if (targetContent.style.display === 'block') {
                 targetContent.style.display = 'none';
+                 this.classList.remove('active');
             } else {
                 targetContent.style.display = 'block';
+                this.classList.add('active');
             }
 
             // Optionally, close other open sections
@@ -251,6 +302,7 @@
                     const otherTargetId = otherButton.dataset.target;
                     const otherTargetContent = document.getElementById(otherTargetId);
                     otherTargetContent.style.display = 'none';
+                     otherButton.classList.remove('active');
                 }
             });
         });
@@ -259,7 +311,7 @@
      // Set the logo link (replace '#' with your desired URL later)
     const logoLink = document.getElementById('logoLink');
     logoLink.href = '#'; // Replace with actual link
-      // Prevent default action for now, since it's a placeholder
+
 });
     </script>
 </body>
