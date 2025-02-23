@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teq Booster Pricing Page</title>
-    <!-- Tailwind CSS (from your original code - I'm assuming you intend to use it) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom CSS (Overriding and supplementing Tailwind) */
+        /* Custom CSS */
         body {
             font-family: 'Outfit', sans-serif;
             background-color: #F5F1EB; /* Light beige background */
@@ -18,25 +18,37 @@
         .navbar {
             background-color: white;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 1rem 2rem; /* More padding */
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap; /* Wrap on smaller screens */
+            flex-wrap: wrap;
         }
 
         .navbar-logo {
-            max-height: 60px; /* Adjust as needed */
-            margin-right: 2rem; /* Space between logo and links */
+            max-height: 60px;
+            margin-right: 2rem;
         }
 
         .navbar-links {
             display: flex;
-            flex-wrap: wrap; /* Wrap links on smaller screens */
-            gap: 1rem; /* Consistent spacing between links */
-            align-items: center; /* Vertically center links */
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
         }
-.navbar-links a::after {
+
+        .navbar-links a {
+            color: #222;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            padding-bottom: 0.25rem;
+            position: relative;
+        }
+
+        .navbar-links a::after {
             content: '';
             position: absolute;
             width: 100%;
@@ -48,72 +60,50 @@
             transition: transform 0.3s ease;
             transform: scaleX(0);
         }
+
         .navbar-links a:hover::after {
             transform-origin: bottom left;
             transform: scaleX(1);
         }
-        .navbar-links a {
-            color: #222; /* Dark gray text */
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-            text-transform: uppercase; /* Uppercase as per your design */
-            font-size: 0.875rem; /* Slightly smaller font size */
-            padding-bottom: 0.25rem;
-            position: relative;
-        }
 
         .navbar-links a:hover {
-            color: #E94F1D; /* Orange on hover */
+            color: #E94F1D;
         }
 
         /* Heading Styling */
         .main-heading {
             text-align: center;
-            font-size: 2.5rem; /* Adjust as needed */
+            font-size: 2.5rem;
             font-weight: 700;
-            color: #0D99C6; /* Use the provided blue color */
+            color: #0D99C6;
             text-transform: uppercase;
-            margin-top: 1rem; /* Space below navbar */
-            margin-bottom: 2rem; /* Space below heading */
-            
+            margin-top: 1rem;
+            margin-bottom: 2rem;
         }
 
-        /* Collapsible Button Styling */
-        .accordion-button {
-            background-color: #E94F1D; /* Orange */
-            color: white;
-            width: 100%;
-            text-align: left;
-            padding: 1rem;
-            border: none;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-family: 'Outfit', sans-serif;
-            text-transform: uppercase;
-        }
-    /* Overall container for responsiveness */
+        /* Overall container for responsiveness */
         .container {
-           max-width: 1200px; /* Or your preferred max-width */
+           max-width: 1200px;
            margin-left: auto;
            margin-right: auto;
            padding-left: 1rem;
            padding-right: 1rem;
         }
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .navbar {
-                flex-direction: column; /* Stack logo and nav on smaller screens */
+                flex-direction: column;
                 align-items: center;
-                 padding: 1rem; /*Reduced Padding*/
+                padding: 1rem;
             }
-             .main-heading{
+
+            .main-heading {
                 font-size: 2rem;
-             }
+            }
+
             .navbar-links {
-                margin-top: 1rem; /* Space between logo and links */
+                margin-top: 1rem;
                 justify-content: center;
                 gap: 0.75rem;
             }
@@ -121,168 +111,143 @@
                 font-size: 0.75rem;
             }
         }
+
+        /* Accordion Styles */
+        .accordion-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next line */
+            justify-content: space-between; /* Distribute space evenly */
+            gap: 1rem; /* Space between items */
+        }
+
+        .accordion-item {
+            flex: 1; /* Each item takes equal width */
+            min-width: 300px; /* Minimum width to prevent too much squeezing */
+            max-width: calc(50% - 0.5rem); /* Maximum width is half the container, minus gap */
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 0.5rem;
+            overflow: hidden; /* Hide overflowing content */
+        }
+          /* Style the accordion button */
+        .accordion-button {
+            background-color: #E94F1D;
+            color: white;
+            cursor: pointer;
+            padding: 1rem;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: background-color 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem; /* Equivalent to text-lg */
+            text-transform: uppercase;
+        }
+
+        .accordion-button:hover {
+            background-color: #c74600; /* Darker orange on hover */
+        }
+
+        /* Style the accordion content */
+        .accordion-content {
+            padding: 1rem;
+            display: none; /* Hidden by default */
+            overflow: hidden;
+            background-color: white;
+        }
+      /* Active state for the accordion button */
+        .accordion-button.active {
+           background-color: #c74600;
+        }
+
     </style>
     <script>
-        function toggleAccordion(id) {
-          const element = document.getElementById(id);
-          if (element.classList.contains('hidden')) {
-            element.classList.remove('hidden');
-          } else {
-            element.classList.add('hidden');
-          }
-        }
+      //  function to show hide accordion content
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+
+                    // Toggle active class on button
+                    this.classList.toggle('active');
+
+                    // Toggle display of content
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+                });
+            });
+             // Set the logo link 
+            const logoLink = document.getElementById('logoLink');
+            logoLink.href = 'https://teqbooster.com/';
+        });
     </script>
 </head>
 <body class="font-sans">
-   <div class = "container">
-      <!-- Navbar -->
-  <nav class="navbar">
-    <a href="https://teqbooster.my.canva.site/landing-page" id="logoLink">
-        <img src="teq booster logo.png" alt="Teq Booster Logo" class="navbar-logo"> <!-- Replace with your logo -->
-    </a>
+    <div class="container">
+        <!-- Navbar -->
+        <nav class="navbar">
+             <a href="https://teqbooster.my.canva.site/landing-page" id="logoLink">
+            <img src="teqbooster-logo.png" alt="Teq Booster Logo" class="navbar-logo">
+            </a>
+            <div class="navbar-links">
+                <a href="companyprofile.html">Company Profile</a>
+                <a href="featuresguide.html">Features & Services</a>
+                <a href="https://teqbooster.com/">Free AI Chatbot Widget</a>
+                <a href="https://links.teqbooster.com/widget/survey/bSajo3h3J5TzSpDyU0s3">Custom Price Quote</a>
+                <a href="https://teqbooster.my.canva.site/contact-us">Contact Information</a>
+            </div>
+        </nav>
 
-    <div class="navbar-links">
-      <a href="companyprofile.html">Company Profile</a>
-      <a href="featuresguide.html">Features & Services</a>
-      <a href="https://teqbooster.com/">Free AI Chatbot Widget</a>
-      <a href="https://links.teqbooster.com/widget/survey/bSajo3h3J5TzSpDyU0s3">Custom Price Quote</a>
-      <a href="https://teqbooster.my.canva.site/contact-us">Contact Information</a>
-    </div>
-  </nav>
+        <!-- Main Heading -->
+        <h1 class="main-heading">Pricing</h1>
 
-  <!-- Main Heading -->
-  <h2 class="main-heading">Pricing</h2>
-   </div>
-  <!-- Main Section (Rest of your content remains the same) -->
-  <section class="p-8">
-    <div class="flex flex-col lg:flex-row gap-8">
-      <!-- Pricing Packages -->
-      <div class="w-full lg:w-1/2">
-        <h2 class="text-3xl font-bold text-center text-white bg-[#E94F1D] rounded-t-lg py-2">Pricing</h2>
-        <div class="space-y-4 p-4 bg-white shadow-lg rounded-b-lg">
-          <!-- Conversation AI Packages -->
-          <div>
-            <button class="w-full text-left bg-[#E94F1D] text-white py-2 px-4 rounded" onclick="toggleAccordion('ai-packages')">Conversation AI Packages</button>
-            <div id="ai-packages" class="mt-2 p-4 bg-gray-100 rounded grid grid-cols-1 md:grid-cols-3 gap-4 hidden">
-              <div class="bg-white shadow-md p-4 rounded">
-                <h3 class="font-bold text-lg">Free Package</h3>
-                <p class="font-semibold">0 QAR / Month</p>
-                <p>Perfect for businesses starting their journey with AI-driven communication.</p>
-                <ul class="list-disc ml-5 mt-2">
-                  <li>Website Chat Widget</li>
-                  <li>10 Additional Custom FAQs Automated</li>
-                  <li>Replies to Social Media Comments: Facebook, Instagram</li>
-                </ul>
-                <p class="mt-2"><strong>Included Services:</strong> Basic client support & FAQs (limited to email support, response within 48 hours)</p>
-              </div>
-              <div class="bg-white shadow-md p-4 rounded">
-                <h3 class="font-bold text-lg">Pro AI Package</h3>
-                <p class="font-semibold">1500 QAR / Month</p>
-                <p>Ideal for growing businesses looking to streamline communication across multiple platforms.</p>
-                <ul class="list-disc ml-5 mt-2">
-                  <li>Multilingual AI Assistant</li>
-                  <li>Automated Replies to Direct Messages (DMs): Instagram, Facebook, WhatsApp</li>
-                  <li>AI Chatbot for Websites</li>
-                  <li>Personalized Conversation Flows Unified Inbox</li>
-                </ul>
-              </div>
-              <div class="bg-white shadow-md p-4 rounded">
-                <h3 class="font-bold text-lg">Premium AI Package</h3>
-                <p class="font-semibold">2000 QAR / Month</p>
-                <p>Designed for businesses that prioritize advanced customer engagement and reputation management.</p>
-                <ul class="list-disc ml-5 mt-2">
-                  <li>All features from Pro AI Package</li>
-                  <li>Automated AI Replies to Reviews</li>
-                  <li>Reviews Management Dashboard</li>
-                  <li>Review Requests Management</li>
-                </ul>
-                <p class="mt-2"><strong>Included Services:</strong> AI Training: Comprehensive training on your company’s data. Complete Client Support and Training. Ongoing support to optimize your AI solution.</p>
-              </div>
+        <!-- Accordion Container -->
+        <div class="accordion-container">
+
+            <!-- Pricing Accordion Item -->
+            <div class="accordion-item">
+                <button class="accordion-button">Pricing</button>
+                <div class="accordion-content">
+                      <div style="position: relative; width: 100%; height: 0; padding-top: 177.7778%;
+                        padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+                        border-radius: 8px; will-change: transform;">
+                        <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                            src="https://www.canva.com/design/DAGfRyrj1hI/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+                        </iframe>
+                        </div>
+                        <a href="https://www.canva.com/design/DAGfRyrj1hI/view?utm_content=DAGfRyrj1hI&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener">TEQ Booster Packages and Pricing</a> by Abdella Ahmed
+
+                </div>
             </div>
-          </div>
-          <!-- General Pricing -->
-          <button class="w-full text-left bg-[#E94F1D] text-white py-2 px-4 rounded" onclick="toggleAccordion('general-pricing')">General Pricing</button>
-          <div id="general-pricing" class="mt-2 p-4 bg-gray-100 rounded grid grid-cols-1 md:grid-cols-2 gap-4 hidden">
-            <div class="bg-white shadow-md p-4 rounded">
-              <h3 class="font-bold text-lg">Basic Package</h3>
-              <p class="font-semibold">1,500 QAR / Month</p>
-              <ul class="list-disc ml-5 mt-2">
-                <li>Conversation AI</li>
-                <li>Unified Inbox</li>
-                <li>Sales Pipeline</li>
-                <li>Social Planner</li>
-                <li>Calendar Management</li>
-                <li>Reputation Management</li>
-                <li>Sites Management</li>
-                <li>Courses Management</li>
-              </ul>
+
+            <!-- Compare Prices Accordion Item -->
+            <div class="accordion-item">
+                <button class="accordion-button">Compare Our Prices</button>
+                <div class="accordion-content">
+                    <div style="position: relative; width: 100%; height: 0; padding-top: 141.4286%;
+                    padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+                    border-radius: 8px; will-change: transform;">
+                    <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                        src="https://www.canva.com/design/DAGe7LZMCc4/ZVdk6XOClHHmZPDh5P47bQ/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+                    </iframe>
+                    </div>
+                    <a href="https://www.canva.com/design/DAGe7LZMCc4/ZVdk6XOClHHmZPDh5P47bQ/view?utm_content=DAGe7LZMCc4&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener">Compare Prices - English</a> by sayyada ahmad
+                </div>
             </div>
-            <div class="bg-white shadow-md p-4 rounded">
-              <h3 class="font-bold text-lg">Pro Package</h3>
-              <p class="font-semibold">5,000 QAR / Month</p>
-              <ul class="list-disc ml-5 mt-2">
-                <li>All features from Basic</li>
-                <li>Data Migration & Integrations (up to 2 sessions)</li>
-                <li>AI Training on company data</li>
-                <li>Complete Client Support and Training (up to 8 hours/month)</li>
-                <li>Advanced Customizations</li>
-              </ul>
-            </div>
-          </div>
-          <!-- Done For You Solutions -->
-          <button class="w-full text-left bg-[#E94F1D] text-white py-2 px-4 rounded" onclick="toggleAccordion('done-for-you')">Done For You Solutions</button>
-          <div id="done-for-you" class="mt-2 p-4 bg-gray-100 rounded grid grid-cols-1 md:grid-cols-3 gap-4 hidden">
-            <div class="bg-white shadow-md p-4 rounded">
-              <h3 class="font-bold text-lg">Starter Package</h3>
-              <p class="font-semibold">4,500 QAR / Month</p>
-              <ul class="list-disc ml-5 mt-2">
-                <li>Essential support for sales & marketing automation</li>
-                <li>Data Migration & Integrations (up to 2)</li>
-                <li>AI Training (1 session)</li>
-                <li>Content Creation (up to 10 pieces/month)</li>
-              </ul>
-            </div>
-            <div class="bg-white shadow-md p-4 rounded">
-              <h3 class="font-bold text-lg">Growth Package</h3>
-              <p class="font-semibold">7,000 QAR / Month</p>
-              <ul class="list-disc ml-5 mt-2">
-                <li>Advanced Customization & Support</li>
-                <li>Data Migration & Integrations (up to 5)</li>
-                <li>Email/SMS Marketing Campaigns (1 per month)</li>
-                <li>Content Creation (up to 20 pieces/month)</li>
-              </ul>
-            </div>
-            <div class="bg-white shadow-md p-4 rounded">
-              <h3 class="font-bold text-lg">Ultimate Success Package</h3>
-              <p class="font-semibold">Starting from 10,000 QAR / Month</p>
-              <ul class="list-disc ml-5 mt-2">
-                <li>Comprehensive service with development support</li>
-                <li>Unlimited AI Training & Support</li>
-                <li>Done-for-you Website & App Development</li>
-                <li>Content Creation (up to 30 pieces/month)</li>
-              </ul>
-            </div>
-          </div>
         </div>
-      </div>
-
-      <!-- Compare Our Prices Section (updated from PDF) -->
-      <!-- Compare Our Prices Section (CORRECTED) -->
-<div class="w-full lg:w-1/2">
-  <button class="text-3xl font-bold text-center text-white bg-[#E94F1D] rounded-t-lg py-2" onclick="toggleAccordion('compare-prices')">Compare Our Prices</button>
-  <div id="compare-prices" class="space-y-4 p-4 bg-white shadow-lg rounded-b-lg">
-    <h3 class="text-lg font-semibold mb-4 text-center">Maximizing Value</h3>
-    <div style="position: relative; width: 100%; height: 0; padding-top: 141.4286%;
-                padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
-                border-radius: 8px; will-change: transform;">
-      <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-              src="https://www.canva.com/design/DAGe7LZMCc4/ZVdk6XOClHHmZPDh5P47bQ/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-      </iframe>
+          <div class="text-center mt-4 pb-4">
+                <a href="https://www.papermark.io/view/cm7bqn3a3000ccfrm6x9oaxli" target="_blank" rel="noopener" class="inline-block bg-[#E94F1D] hover:bg-orange-600 text-white font-bold py-2 px-4 rounded">
+                Download Pricing Details
+                </a>
+            </div>
     </div>
-    <a href="https://www.canva.com/design/DAGe7LZMCc4/ZVdk6XOClHHmZPDh5P47bQ/view?utm_content=DAGe7LZMCc4&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener"></a>
-  </div>
-</div>
-    </div>
-  </section>
+</section>
 </body>
 </html>
