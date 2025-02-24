@@ -116,14 +116,14 @@
         .accordion-container {
             display: flex;
             flex-wrap: wrap; /* Allow wrapping on smaller screens */
-            justify-content: space-between;
+            justify-content: flex-start; /* Align items to the start (left on LTR) */
             gap: 1rem; /* Add gap between accordion items */
         }
 
         .accordion-item {
-            flex: 1;
-            min-width: 300px; /* Minimum width, adjust as needed */
-            max-width: calc(50% - 0.5rem);/*Use this in case you have 2 accordions*/
+            flex: 1; /* Allow items to grow and shrink */
+            min-width: 300px; /* Minimum width for each item */
+            /* max-width: calc(50% - 0.5rem);  <-- REMOVED THIS LINE */
             background-color: white;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             border-radius: 0.5rem;
